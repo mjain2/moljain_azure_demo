@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title> Basic Contact App</title>
+	<meta charset="utf-8" />
+    <link href="/Content/index.css" rel="stylesheet" />
+    <!-- Mollee Jain 
+        moljain@microsoft.com
+        Last updated: 8/17/2016
+        A basic page that allows you to enter/view/search/change contact information-->
+</head>
+<body>
+
+    <!-- Show all contacts here-->
+    <div id="allContacts">
+        <h1> All Contacts: </h1>
+        <hr />
+        <ul id="contacts"> </ul>
+        <hr />
+    </div>
+
+    <br />
+    <!-- Search by Alias/Key -->
+    <div>
+        <h1> Search by Alias: </h1>
+
+        <input type="text" id="contactAlias" />
+        <br /><br />
+        <input type="button" value="Search" onclick="find();" /> 
+        <p id="contact"></p>
+    </div>
+
+    <!-- Search by any thing-->
+    <div>
+        <h1> Search: </h1>
+        <select name="selectSearch" id="selectSearch">
+            <option value="Alias" id="searchAlias"> Alias </option>
+            <option value="Name"  id="searchName"> Name </option>
+            <option value="Team" id="searchTeam"> Team </option>
+            <option value="Hobbies" id="searchHobbies"> Hobbies </option>
+        </select>
+     
+        <input type="text" id="selectQuery" />
+        <br /><br />
+        <input type="button" value="Search" onclick="query();" />
+        <p id="searchResults"></p>
+    </div>
+
+    <!-- Option to add a contact -->
+    <div>
+        <form action='api/Contacts' id="addForm" method="post">
+            <h1> Add a contact: </h1>
+            <label for="Name"> Name*:  </label> <input type="text" id="Name" name="Name" required /> <br />
+            <label for="Alias"> Alias*:  </label><input type="text" id="Alias" name="Alias" required /> <br />
+            <label for="Team"> Team*:  </label><input type="text" id="Team" name="Team" required /><br />
+            <label for="Hobbies"> Hobby: </label><input type="text" id="Hobbies" name="Hobbies" /><br />
+            <br /><br />
+            <input type="button" value="Add" onclick="add();" />
+
+        </form>
+        <p id="addContact"></p>
+        <input type="button" id="refresh" value="Refresh Contact List" style="display: none;" onclick="location.reload();" />
+    </div>
+    <!-- Option to delete a contact-->
+    <div>
+        <h1>Delete contact [by alias]: </h1>
+        <input type="text" id="deleteAlias" />
+        <br /><br />
+        <input type="button" value="Delete" onclick="deleteContact();" />
+        <p id="deleteContact"></p>
+        <input type="button" id="refresh2" value="Refresh Contact List" style="display: none;" onclick="location.reload();" />
+    </div>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script src="Contact.js"></script>
+</body>
+</html>
